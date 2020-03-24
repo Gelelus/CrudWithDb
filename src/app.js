@@ -3,7 +3,7 @@ const router = require('./routers/export-router');
 const mongo = require("mongodb");
 const mongoose = require("mongoose");
 
-require('dotenv').config(); //прочтение env
+require('dotenv').config(); //env reader
 
 mongoose.connect(process.env.MONGO_DB, {
     useNewUrlParser: true,
