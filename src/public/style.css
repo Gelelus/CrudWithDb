@@ -1,0 +1,26 @@
+html {
+    background: gray;
+}
+
+body {
+    background: #faf0e6;
+    margin: auto;
+    max-width: 800px;
+    margin-top: 10vh;
+    padding: 3em;
+    border-radius: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.panel-body,
+span {
+    text-align: center;
+}
+
+a {
+    cursor: pointer;
+}
+
+h2 {
+    text-align: center;
+}
