@@ -51,7 +51,7 @@ class UserController {
             res.status(400).send({error:e.message})
         }
     }
-    
+
     logout =  async (req, res) => {
         try {
             await service.logout(req)

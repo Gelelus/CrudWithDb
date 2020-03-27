@@ -90,6 +90,13 @@
     </table>
 
     <script>
+
+        // Token есть в localStorage
+        if (localStorage.getItem('token')) {
+            document.forms["authForm"].hidden = true
+            document.getElementById('logoutDiv').hidden = false
+        }
+
         // Получение всех пользователей
         const GetUsers = async () => {
 
@@ -184,7 +191,7 @@
             document.querySelector("tr[data-rowid='" + user._id + "']").remove();
 
         }
-
+        // login Юзера
         const LoginUser = async (userName, userPassword) => {
 
             let data = {
@@ -209,6 +216,26 @@
             }
         }
 
+        //logout user
+        const LogoutUser = async () => {
+            
+            let response = await fetch('/users/logout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json;',
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                }
+            });
+            let user = await response.json();
+            console.log(user)
+            if (user.responce) {
+
+                localStorage.removeItem('token')
+                document.forms["authForm"].hidden = false
+                document.getElementById('logoutDiv').hidden = true
+            }
+        }
+
         // создание строки для таблицы
         const row = function (user) {
             return "<tr data-rowid='" + user._id + "'><td>" + user._id + "</td>" +
@@ -222,6 +249,8 @@
             e.preventDefault();
             reset();
         }
+        // logout
+        document.getElementById("logout").onclick = LogoutUser
 
         // logIn 
         document.querySelectorAll("form")[0].onsubmit = function (e) {

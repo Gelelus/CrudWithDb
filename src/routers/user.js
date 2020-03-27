@@ -15,6 +15,6 @@ router.get('/:id', auth, user_controller.getUser)       // юзера
 
 router.get('/', user_controller.getAllUser)             //визуал 
 router.post('/login', user_controller.login)            //авторизация
-router.post('/logout',auth , user_controller.logout)    //выход 
+router.post('/logout',auth , user_controller.logout)     //выход 
 
 module.exports = router
