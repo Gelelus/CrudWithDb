@@ -56,7 +56,7 @@
         </div>
     </form>
 
-    <h2>Список пользователей</h2>
+    <h2>Регистрация пользователя</h2>
     <form name="userForm">
         <input type="hidden" name="id" value="0" />
         <div class="form-group">
@@ -119,11 +119,12 @@
             let response = await fetch('/users/' + id)
             let user = await response.json();
             console.log(user)
-            let form = document.forms["userForm"];
-            form.elements["id"].value = user._id;
-            form.elements["name"].value = user.name;
-            form.elements["age"].value = user.age;
-
+            if (!user.error) {
+                let form = document.forms["userForm"];
+                form.elements["id"].value = user._id;
+                form.elements["name"].value = user.name;
+                form.elements["age"].value = user.age;
+            }
         }
 
         // Добавление пользователя
@@ -186,12 +187,12 @@
             });
             let user = await response.json();
 
-            console.log(user, 'удален');
-
-            document.querySelector("tr[data-rowid='" + user._id + "']").remove();
-
+            console.log(user);
+            if (user._id) {
+                document.querySelector("tr[data-rowid='" + user._id + "']").remove();
+            }
         }
-        // login Юзера
+        // login пользователя
         const LoginUser = async (userName, userPassword) => {
 
             let data = {
@@ -216,9 +217,9 @@
             }
         }
 
-        //logout user
+        //logout пользователя
         const LogoutUser = async () => {
-            
+
             let response = await fetch('/users/logout', {
                 method: 'POST',
                 headers: {
@@ -226,14 +227,12 @@
                     'Authorization': 'Bearer ' + localStorage.getItem('token')
                 }
             });
+            
             let user = await response.json();
             console.log(user)
-            if (user.responce) {
-
-                localStorage.removeItem('token')
-                document.forms["authForm"].hidden = false
-                document.getElementById('logoutDiv').hidden = true
-            }
+            localStorage.removeItem('token')
+            document.forms["authForm"].hidden = false
+            document.getElementById('logoutDiv').hidden = true
         }
 
         // создание строки для таблицы

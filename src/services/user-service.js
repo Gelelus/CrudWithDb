@@ -38,8 +38,8 @@ const del = async function (req) {
 }
 
 const login = async function (req) { //password login приходит 
-
-    const user = await User.findByCredentials(req.login, req.password) //статик метод из model проверка хэша и логина
+    console.log(req)
+    const user = await User.findByCredentials(req.name, req.password) //статик метод из model проверка хэша и логина
     const token = await user.generateAuthToken()  // запись токена в базу и его return 
     return {user, token}
   
