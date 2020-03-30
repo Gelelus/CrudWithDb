@@ -13,7 +13,7 @@ router.delete('/:id', auth, user_controller.deleteUser) // удаление
 router.put('/', auth, user_controller.updateUser)       // изменение
 router.get('/:id', auth, user_controller.getUser)       // юзера
 
-router.get('/', user_controller.getAllUser)             //визуал 
+router.get('/',auth , user_controller.getAllUser)             //визуал 
 router.post('/login', user_controller.login)            //авторизация
 router.post('/logout',auth , user_controller.logout)     //выход 
 

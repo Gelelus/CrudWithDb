@@ -8,14 +8,15 @@ if (localStorage.getItem('token')) {
 // Получение всех пользователей
 const GetUsers = async () => {
 
-    let response = await fetch('/users')
+    let response = await fetch('/users',{headers:{'Authorization': 'Bearer ' + localStorage.getItem('token')}})
     let users = await response.json();
     let rows = '';
+    if (!users.error) {
     users.forEach(user => {
         rows += row(user);
     });
     document.querySelector("table tbody").innerHTML = rows;
-
+}
 }
 
 
@@ -135,6 +136,7 @@ const LoginUser = async (userName, userPassword) => {
         document.forms["authForm"].hidden = 'true'
         document.getElementById('logoutDiv').hidden = false
     }
+    GetUsers();
 }
 
 //logout пользователя
