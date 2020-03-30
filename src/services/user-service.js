@@ -25,7 +25,7 @@ const getAll = async function () {
 }
 
 const update = async function (req) {
-
+    console.log (req)
     return await User.findByIdAndUpdate(req.id, req, { returnOriginal: false })
 
 }

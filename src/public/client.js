@@ -68,15 +68,17 @@ const EditUser = async (userId, userName, userAge) => {
         name: userName,
         age: userAge
     }
+    
     let response = await fetch('/users', {
         method: 'PUT',
-        credentials: 'same-origin',
         headers: {
-            'Content-Type': 'application/json;',
+            'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + localStorage.getItem('token')
         },
         body: JSON.stringify(data)
     });
+
+    console.log(response)
     let user = await response.json();
     reset();
     console.log(user);
