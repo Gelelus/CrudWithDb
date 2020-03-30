@@ -1,5 +1,5 @@
 html {
-    background: gray;
+    background: #faf0e6;
 }
 
 body {
@@ -10,6 +10,7 @@ body {
     padding: 3em;
     border-radius: 50px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    font-family: monospace;
 }
 
 .panel-body,
@@ -23,4 +24,16 @@ a {
 
 h2 {
     text-align: center;
+}
+#auth{
+    position: absolute;
+    right:0;
+    top:0;
+    padding:5px;
+    
+    background: #faf0e6;
+}
+.mainForm{
+    width:50%;
+    margin:auto;
 }
