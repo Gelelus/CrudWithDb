@@ -135,6 +135,7 @@ const LoginUser = async (userName, userPassword) => {
         document.forms["authForm"].reset();
         document.forms["authForm"].hidden = 'true'
         document.getElementById('logoutDiv').hidden = false
+        
     }
     GetUsers();
 }

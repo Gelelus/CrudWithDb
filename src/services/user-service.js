@@ -41,14 +41,16 @@ const login = async function (req) { //password login приходит
     
     console.log(req)
     const user = await User.findByCredentials(req.name, req.password) //статик метод из model проверка хэша и логина
+   
     const token = await user.generateAuthToken()  // запись токена в базу и его return 
+    
     return {user, token}
   
 }
 
 const logout = async function(req){
 
-    req.user.token = '';
+    
     await req.user.save()
 
 }

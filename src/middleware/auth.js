@@ -8,7 +8,7 @@ const auth = async (req, res, next) => {
        
         const decoded = jwt.verify(token, 'expressapp');
         
-        const user = await User.findOne({_id: decoded._id ,token: token});
+        const user = await User.findOne({_id: decoded._id});
         
         if(!user){
             throw new Error
