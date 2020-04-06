@@ -11,7 +11,7 @@ mongoose.connect(process.env.MONGO_DB, {
     useUnifiedTopology: true,
     useCreateIndex: true
 })
-  
+    
   console.log(
             `
            State of connection - ${mongoose.connection.readyState} 
