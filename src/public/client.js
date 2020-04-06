@@ -59,8 +59,9 @@ const CreateUser = async (userName, userAge, userPassword) => {
     let user = await response.json();
     console.log(user)
     reset();
+    if(response.status<400){
     document.querySelector("table tbody").insertAdjacentHTML('beforeend', row(user));
-
+    }
 }
 
 // Изменение пользователя

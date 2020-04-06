@@ -2,7 +2,7 @@ const User = require('../models/user');
 
 
 const add = async function (data) {
-
+    
     const user = new User(data) //password age login приходит 
     await user.save()
     return user
@@ -48,12 +48,7 @@ const login = async function (data) { //password login приходит
   
 }
 
-const logout = async function(req){ //request приходит 
 
-    
-    await req.user.save() //mongdb user дабавленный при auth в request 
-
-}
 
 module.exports = {
     add,
@@ -61,6 +56,5 @@ module.exports = {
     update,
     del,
     getAll,
-    login,
-    logout
+    login
 }
