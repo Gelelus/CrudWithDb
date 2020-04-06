@@ -51,7 +51,7 @@ const login = async function (data) { //password login приходит
 const logout = async function(req){ //request приходит 
 
     
-    await req.user.save()
+    await req.user.save() //метод дабавленный при auth в request 
 
 }
 
