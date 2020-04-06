@@ -1,18 +1,18 @@
 const User = require('../models/user');
 
 
-const add = async function (req) {
+const add = async function (data) {
 
-    const user = new User(req) //password age login приходит 
+    const user = new User(data) //password age login приходит 
     await user.save()
     return user
 
 
 }
 
-const get = async function (req) {
+const get = async function (data) {
 
-    return await User.findById(req)
+    return await User.findById(data)
 
 
 }
@@ -24,23 +24,23 @@ const getAll = async function () {
 
 }
 
-const update = async function (req) {
-    console.log (req)
-    return await User.findByIdAndUpdate(req.id, req, { returnOriginal: false })
+const update = async function (data) {
+    console.log (data)
+    return await User.findByIdAndUpdate(data.id, data, { returnOriginal: false })
 
 }
 
 
-const del = async function (req) {
+const del = async function (data) {
 
-    return await User.findByIdAndDelete(req)
+    return await User.findByIdAndDelete(data)
 
 }
 
-const login = async function (req) { //password login приходит 
+const login = async function (data) { //password login приходит 
     
-    console.log(req)
-    const user = await User.findByCredentials(req.name, req.password) //статик метод из model проверка хэша и логина
+    console.log(data)
+    const user = await User.findByCredentials(data.name, data.password) //статик метод из model проверка хэша и логина
    
     const token = await user.generateAuthToken()  // запись токена в базу и его return 
     
@@ -48,7 +48,7 @@ const login = async function (req) { //password login приходит
   
 }
 
-const logout = async function(req){
+const logout = async function(req){ //request приходит 
 
     
     await req.user.save()
