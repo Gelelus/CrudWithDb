@@ -10,9 +10,9 @@ const add = async function (data) {
 
 }
 
-const get = async function (data) {
+const get = async function (id) {
 
-    return await User.findById(data)
+    return await User.findById(id)
 
 
 }
@@ -31,9 +31,9 @@ const update = async function (data) {
 }
 
 
-const del = async function (data) {
+const del = async function (id) {
 
-    return await User.findByIdAndDelete(data)
+    return await User.findByIdAndDelete(id)
 
 }
 
